@@ -1,3 +1,3 @@
-FROM alpine:3.7
-RUN apk add --no-cache mariadb-client
-ENTRYPOINT ["mysql"]
+FROM FROM ubuntu:latest
+RUN RUN apt-get update
+USER 1001
