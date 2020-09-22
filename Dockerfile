@@ -11,7 +11,7 @@ RUN yum install -y http://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SC
     yum install -y https://dl.bintray.com/sbt/rpm/sbt-$SBT_VERSION.rpm && \
     yum install -y git
 
-RUN git clone https://github.com/arempter/makisu-example.git -b update_app_1
+RUN git clone https://github.com/arempter/makisu-example.git -b master
 RUN cd makisu-example && sbt universal:packageBin
 
 FROM openjdk:11.0.8-jdk-slim
