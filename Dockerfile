@@ -7,9 +7,9 @@ ENV SBT_VERSION 1.3.13
 RUN yum install -y java-11-openjdk-devel
 
 # Install Scala and SBT
-RUN yum install -y http://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.rpm
-RUN yum install -y https://dl.bintray.com/sbt/rpm/sbt-$SBT_VERSION.rpm
-RUN yum install -y git
+RUN yum install -y http://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.rpm && \
+    yum install -y https://dl.bintray.com/sbt/rpm/sbt-$SBT_VERSION.rpm && \
+    yum install -y git
 
 RUN git clone https://github.com/arempter/makisu-example.git
 RUN cd makisu-example && sbt universal:packageBin
