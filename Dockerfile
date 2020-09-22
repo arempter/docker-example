@@ -14,8 +14,8 @@ RUN yum install -y http://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SC
 RUN git clone https://github.com/arempter/makisu-example.git -b update_app
 RUN cd makisu-example && sbt universal:packageBin
 
-FROM centos:8
-RUN yum install -y java-11-openjdk-devel unzip
+FROM openjdk:11.0.8-jdk-slim
+RUN yum install -y unzip
 COPY --from=stage-app /makisu-example/target/universal/makisu_example-0.1.1.zip .
-RUN unzip makisu_example-0.1.1.zip && chmod +x /makisu_example-0.1/bin/makisu_example
+RUN unzip makisu_example-0.1.1.zip && chmod +x /makisu_example-0.1.1/bin/makisu_example
 CMD ["./makisu_example-0.1.1/bin/makisu_example"]

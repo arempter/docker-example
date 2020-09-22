@@ -13,6 +13,8 @@ spec:
         - clone
         - https://github.com/arempter/makisu-example.git
         - /makisu-context
+        - -b
+        - update_app
         volumeMounts:
         - name: context
           mountPath: /makisu-context
