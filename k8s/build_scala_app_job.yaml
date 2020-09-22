@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: scala-build-example-1
+  name: scala-build-example-2
 spec:
   template:
     spec:
@@ -13,6 +13,8 @@ spec:
         - clone
         - https://github.com/arempter/makisu-example.git
         - /makisu-context
+        - -b
+        - update_app_1
         volumeMounts:
         - name: context
           mountPath: /makisu-context
