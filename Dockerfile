@@ -11,7 +11,7 @@ RUN yum install -y http://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SC
     yum install -y https://dl.bintray.com/sbt/rpm/sbt-$SBT_VERSION.rpm && \
     yum install -y git
 
-RUN git clone https://github.com/arempter/makisu-example.git
+RUN git clone https://github.com/arempter/makisu-example.git -b update_app
 RUN cd makisu-example && sbt universal:packageBin
 
 FROM centos:8
