@@ -16,6 +16,6 @@ RUN cd makisu-example && sbt universal:packageBin
 
 FROM centos:8
 RUN yum install -y java-11-openjdk-devel unzip
-COPY --from=stage-app /makisu-example/target/universal/makisu_example-0.1.zip .
-RUN unzip makisu_example-0.1.zip && chmod +x /makisu_example-0.1/bin/makisu_example
-CMD ["./makisu_example-0.1/bin/makisu_example"]
+COPY --from=stage-app /makisu-example/target/universal/makisu_example-0.1.1.zip .
+RUN unzip makisu_example-0.1.1.zip && chmod +x /makisu_example-0.1/bin/makisu_example
+CMD ["./makisu_example-0.1.1/bin/makisu_example"]
