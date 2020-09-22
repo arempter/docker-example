@@ -9,7 +9,7 @@ object Application extends zio.App {
   def okFuture: Future[String] = Future.successful("ok")
 
   val program: ZIO[Console, Throwable, Unit] = for {
-    _ <- putStrLn("run on: " + Thread.currentThread().getName)
+    _ <- putStrLn("program run on: " + Thread.currentThread().getName)
     f <- ZIO.fromFuture { ec => okFuture }
     _ <- putStrLn(s"program1, got result from Future $f")
   } yield ()
