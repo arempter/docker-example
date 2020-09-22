@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+  labels:
+    redis: "true"
+spec:
+  containers:
+  - name: main
+    image: bitnami/redis:latest
+    env:
+    - name: MASTER
+      value: "true"
+    - name: ALLOW_EMPTY_PASSWORD
+      value: "yes"
+    ports:
+    - containerPort: 6379
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis
+spec:
+  selector:
+    redis: "true"
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
+---
+

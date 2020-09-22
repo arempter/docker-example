@@ -1,0 +1,9 @@
+index.docker.io:
+  REPO:
+    security:
+      tls:
+        client:
+          disabled: false
+      basic:
+        username: "USER"
+        password: "PASSWORD"
