@@ -15,7 +15,10 @@ RUN git clone https://github.com/arempter/makisu-example.git -b master
 RUN cd makisu-example && sbt universal:packageBin
 
 FROM openjdk:11.0.8-jdk-slim
+
+ENV APP_VERSION 0.1.2
+
 RUN apt-get update -y && apt-get install -y unzip
-COPY --from=stage-app /makisu-example/target/universal/makisu_example-0.1.2.zip .
-RUN unzip makisu_example-0.1.2.zip && chmod +x /makisu_example-0.1.2/bin/makisu_example
-CMD ["./makisu_example-0.1.2/bin/makisu_example"]
+COPY --from=stage-app /makisu-example/target/universal/makisu_example-$APP_VERSION.zip .
+RUN unzip makisu_example-$APP_VERSION.zip && chmod +x /makisu_example-$APP_VERSION/bin/makisu_example
+CMD ["./makisu_example-$APP_VERSION/bin/makisu_example"]
